@@ -2,7 +2,8 @@
 
 NOTE: configure the path of authParams.props file in 'elasticsearch.yml' file, as shown below:
 
-Windows: 
-authParams.path : "C:/Users/imisxk0/Downloads/elasticsearch-1.2.1/elasticsearch-1.2.1/config/authParams.props" 
+Windows:
+>authParams.path : "C:/Users/imisxk0/Downloads/elasticsearch-1.2.1/elasticsearch-1.2.1/config/authParams.props" 
+
 Linux: 
-authParams.path : "/etc/elasticsearch/authParams.props" 
+>authParams.path : "/etc/elasticsearch/authParams.props" 
