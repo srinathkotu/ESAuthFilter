@@ -1,0 +1,9 @@
+user.not.admin=User is not an ELK Admin
+under.development=Under development
+index.access.forbidden.get=Cannot access index
+index.access.forbidden.put=Cannot put data
+invalid.ip=Un-authorized access
+index.setting.notdefined=ACI index setting not defined
+index.not.found=Index not found
+groupnames.username.notdefined=Groupnames not defined for user
+admin.list=elkadmin,superadmin
