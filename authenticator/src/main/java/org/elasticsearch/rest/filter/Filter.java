@@ -103,7 +103,7 @@ public class Filter extends RestFilter {
 		boolean result = false;
 		try 
 		{
-			String resp = client.target("http://localhost:9200/"+index+"/_settings").queryParam("gettingSettings", "true").request("application/json").get(String.class);	//query elasticsearch for getting settings of requested index
+			String resp = client.target("http://"+authParams.getProperty("hostname")+":"+authParams.getProperty("port")+"/"+index+"/_settings").queryParam("gettingSettings", "true").request("application/json").get(String.class);	//query elasticsearch for getting settings of requested index
 			JsonSettingsLoader jsl = new JsonSettingsLoader();	
 			String jsString =jsl.load(resp).get(index+".settings.index.ACI");	//convert response string to JSON and extracting javascript from response map
 
@@ -182,13 +182,13 @@ public class Filter extends RestFilter {
 	/*
 	 * This method queries the external api to retrieve the list of indices that can be accessed by the user
 	 */
-	public List<String> queryRest(String solution,Client client)
+	public List<String> queryRest(String username,Client client)
 	{
-		logger.debug("entered queryRest, solution:"+solution);
+		logger.debug("entered queryRest, username:"+username);
 		List<String> gnames=null;
 		try 
 		{
-			String resp = client.target("http://localhost:2403/groups?username="+solution).request("application/json").get(String.class);
+			String resp = client.target(authParams.getProperty("external.api.request")+username).request("application/json").get(String.class);
 			JsonSettingsLoader jsl = new JsonSettingsLoader();
 			resp = resp.substring(1, resp.length()-1);
 			gnames = new ArrayList<String>(Arrays.asList(jsl.load(resp).get("gname").split(",")));	//convert response string to JSON and tokenize group names to list
